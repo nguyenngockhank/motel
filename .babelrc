@@ -1,0 +1,28 @@
+{
+    "presets": [
+      ["@babel/env", {
+        "useBuiltIns": "entry",
+        "corejs": { 
+          "version": 3, 
+          "proposals": true 
+        }
+      }]
+    ],
+    "plugins": [
+      "@babel/plugin-syntax-dynamic-import",
+      ["@babel/plugin-transform-runtime",
+        {
+          "regenerator": true
+        }
+      ],
+      [
+        "module-resolver", 
+        {
+          "root": [ "./src" ],
+          "alias": {
+            // add alias here
+          }
+        }
+      ]
+    ]
+}
