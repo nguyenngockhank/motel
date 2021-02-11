@@ -12,13 +12,26 @@ export class CoreModule implements VueModule {
   readonly name = 'core'
 
   constructor(private router: VueRouter, private store: Store<any>) {}
+
+  private get isAuthenticated() {
+    if (!this.store.state.login) {
+      return false;
+    }
+    return this.store.state.login.isLogin;
+  }
   
   install(Vue: typeof _Vue) {
-    // set dup element ui
     Vue.use(ElementUI)
-
-    // register Vue
     Vue.prototype.$eventBus = new Vue()
+    
+    // set up Navigation Guards
+    this.router.beforeEach((to, from, next) => {
+      if (to.name !== 'Login' && !this.isAuthenticated) {
+        next({ name: 'Login' })
+      } else {
+        next()
+      } 
+    })
 
     // render component
     new Vue({
@@ -27,5 +40,6 @@ export class CoreModule implements VueModule {
       el: '#app',
       render: h => h(App),
     })
+    
   }
 }
