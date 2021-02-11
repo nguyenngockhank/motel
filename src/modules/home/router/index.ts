@@ -3,8 +3,8 @@ import HelloWorld from '../components/HelloWorld.vue'
 
 export const homeRoutes: RouteConfig[] = [
     {
-        path: '/',
-        name: 'HelloWorld',
+        path: '/home',
+        name: 'Home',
         component: HelloWorld,
     }
 ]

@@ -3,8 +3,10 @@ __webpack_public_path__ = (window as any).assetUrl || '';
 
 import Vue from "vue"
 import { CoreModule, RouterModule, StoreModule } from "./modules/core"
+
 import { HomeModule } from "./modules/home" 
 import { AboutModule } from "./modules/about"
+import { LoginModule } from "./modules/login";
 
 function bootstrap() {
   Vue.config.productionTip = false
@@ -17,6 +19,9 @@ function bootstrap() {
 
   const coreModule = new CoreModule(routerModule.router!, storeModule.store!)
   coreModule.install(Vue)
+
+  const loginModule = new LoginModule(routerModule.router!, storeModule.store!)
+  loginModule.install(Vue)
 
   const homeModule = new HomeModule(routerModule.router!, storeModule.store!)
   homeModule.install(Vue)
