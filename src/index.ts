@@ -1,14 +1,16 @@
 // @ts-ignore
 __webpack_public_path__ = (window as any).assetUrl || '';
-
+import "reflect-metadata"
 import Vue from "vue"
 import { CoreModule, RouterModule, StoreModule } from "./modules/core"
 
 import { HomeModule } from "./modules/home" 
 import { AboutModule } from "./modules/about"
-import { LoginModule } from "./modules/login";
+import { LoginModule } from "./modules/login"
 
-function bootstrap() {
+import container from './motel/infra/inversify.config'
+
+async function bootstrap() {
   Vue.config.productionTip = false
 
   const routerModule = new RouterModule()
@@ -17,17 +19,10 @@ function bootstrap() {
   const storeModule = new StoreModule()
   storeModule.install(Vue)
 
-  const coreModule = new CoreModule(routerModule.router!, storeModule.store!)
-  coreModule.install(Vue)
-
-  const loginModule = new LoginModule(routerModule.router!, storeModule.store!)
-  loginModule.install(Vue)
-
-  const homeModule = new HomeModule(routerModule.router!, storeModule.store!)
-  homeModule.install(Vue)
-
-  const aboutModule = new AboutModule(routerModule.router!, storeModule.store!)
-  aboutModule.install(Vue)
+  new CoreModule(routerModule.router!, storeModule.store!).install(Vue)
+  new LoginModule(routerModule.router!, storeModule.store!).install(Vue)
+  await new HomeModule(routerModule.router!, storeModule.store!, container).install(Vue)
+  new AboutModule(routerModule.router!, storeModule.store!).install(Vue)
 }
 
 bootstrap()

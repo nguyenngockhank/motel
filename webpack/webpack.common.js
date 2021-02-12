@@ -1,6 +1,7 @@
 const { VueLoaderPlugin } = require('vue-loader')
 
 var path = require('path')
+var ROOT_DIR = path.resolve(__dirname, '../')
 var APP_DIR = path.resolve(__dirname, '../', 'src')
 var BUILD_DIR = path.resolve(__dirname, '../', 'dist')
 
@@ -50,7 +51,7 @@ module.exports = {
             vue: 'vue/dist/vue.js', 
             '@': APP_DIR 
         },
-        modules: ["node_modules"]
+        modules: ["node_modules", ROOT_DIR]
     },
     plugins: [
         new VueLoaderPlugin(),

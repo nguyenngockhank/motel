@@ -10,3 +10,9 @@ export const homeStore: Module<any, HomeState> = {
   actions,
   mutations,
 }
+
+
+import { createNamespacedHelpers } from 'vuex'
+export function createHomeStoreHelper() {
+  return createNamespacedHelpers('home');
+}
