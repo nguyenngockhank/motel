@@ -51,9 +51,16 @@ export default {
         };
     },
     computed: {
-        ...mapState({
-            defaultChecklists: state => state.defaultChecklists,
-        }),
+        ...mapState(['defaultChecklists']),
+    },
+    watch: {
+        defaultChecklists: {
+            immediate: true,
+            handler(val) {
+                // this value change only once
+                this.checkAllList();
+            }
+        }
     },
     methods : {
         back() {
@@ -64,6 +71,13 @@ export default {
                 beforeCheckInList: this.beforeCheckInList,
                 afterCheckInList: this.afterCheckInList,
             })
+        },
+        checkAllList() {
+            ['beforeCheckInList', 'afterCheckInList', 'beforeCheckOutList', 'afterCheckOutList'].map(
+                key => {
+                    this[key] = this.defaultChecklists[key].map(item => item.value)
+                }
+            )
         }
     }
 }

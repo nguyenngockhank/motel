@@ -11,14 +11,14 @@
       <el-step title="Thủ tục" ></el-step>
     </el-steps>
 
-    <FormIntro v-if="currentStep == 0" 
+    <FormIntro v-show="currentStep == 0" 
         @next="handleIntroClickNext" 
     />
-    <FormRoom v-if="currentStep == 1" 
+    <FormRoom v-show="currentStep == 1" 
         @next="handleRoomClickNext" 
         @back="handleClickBack" 
     />
-    <FormChecklist v-if="currentStep == 2" 
+    <FormChecklist v-show="currentStep == 2" 
         @next="handleChecklistFinish" 
         @back="handleClickBack" 
     />
