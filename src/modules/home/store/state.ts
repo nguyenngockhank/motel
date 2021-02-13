@@ -1,9 +1,9 @@
 import { ChecklistItem } from "src/motel/checklist/domain/Checklist";
-import { InitMotelInteractor } from "src/motel/motel/interactor/InitMotelInteractor";
+import { MotelInitInteractor } from "src/motel/motel/interactor/MotelInitInteractor";
 
 export interface HomeState {
     interactors: {
-        initMotel?: InitMotelInteractor
+        initMotel?: MotelInitInteractor
     },
     testCount: number;
     defaultChecklists: Record<string, ChecklistItem[]>;

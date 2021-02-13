@@ -6,7 +6,7 @@ import { Store } from 'vuex'
 import { homeStore } from './store'
 import { AppContainer, TYPES  } from 'src/motel/domain/di-container'
 import { ChecklistsDefaultGetInteractor } from 'src/motel/checklist/interactor/ChecklistsDefaultGetInteractor'
-import { SET_DEFAULT_CHECKLISTS } from './store/action-types'
+import { INIT_CHECKLIST_OPTIONS } from './store/action-types'
 
 export class HomeModule implements VueModule {
   readonly name = 'home'
@@ -19,6 +19,6 @@ export class HomeModule implements VueModule {
     // init data in store
     const service = this.diContainer.get<ChecklistsDefaultGetInteractor>(TYPES.ChecklistsDefaultGetInteractor)
     const data = await service.execute();
-    this.store.dispatch(`${this.name}/${SET_DEFAULT_CHECKLISTS}`, data)
+    this.store.dispatch(`${this.name}/${INIT_CHECKLIST_OPTIONS}`, data)
   }
 }

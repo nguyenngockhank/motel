@@ -4,7 +4,7 @@ import { MotelCreateInput, MotelSetting } from "../domain/MotelSetting";
 export type InitRequest = MotelCreateInput;
 
 @injectable()
-export class InitMotelInteractor {
+export class MotelInitInteractor {
 
     constructor(@inject(TYPES.MotelSetting) private motelSetting: MotelSetting) {}
 

@@ -5,6 +5,8 @@ import { mutations } from './mutations'
 import { actions } from './actions'
 import { getters } from './getters'
 
+export type HomeStore = typeof homeStore
+
 export const homeStore: Module<any, HomeState> = {
   namespaced: true,
   state: initialState,
@@ -12,6 +14,8 @@ export const homeStore: Module<any, HomeState> = {
   mutations,
   getters,
 }
+
+
 
 
 import { createNamespacedHelpers } from 'vuex'

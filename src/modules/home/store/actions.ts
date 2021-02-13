@@ -1,4 +1,7 @@
+import { ActionContext } from "vuex";
 import * as constants from "./action-types"
+import { HomeState } from "./state";
+import { HomeGetters } from "./getters";
 
 const INIT_MOTEL = constants.INIT_MOTEL;
 
@@ -24,8 +27,9 @@ export type InitMotelPayload = {
 }
 
 
-actions[INIT_MOTEL] =  async ({ commit, getters }, payload: InitMotelPayload ) => {
-    await getters.initMotelInteractor.execute(payload.motel)
+actions[INIT_MOTEL] = async ({ getters, commit } : ActionContext<HomeState, null>, payload: InitMotelPayload ) => {
+    await (getters as HomeGetters).initMotelInteractor.execute(payload.motel)
+
     commit(INIT_MOTEL, payload)
 }
 
