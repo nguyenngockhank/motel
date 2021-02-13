@@ -12,7 +12,6 @@ export class LocalStorageMotelSetting implements MotelSetting {
     }
 
     async create(input: MotelCreateInput): Promise<void> {
-        console.log('CREATE SET ITEM TO LOCAL STORAGE', input)
         this.storage.setItem('MotelInfo', input);
     }
 }

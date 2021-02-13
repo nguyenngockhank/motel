@@ -8,8 +8,6 @@ import { HomeModule } from "./modules/home"
 import { AboutModule } from "./modules/about"
 import { LoginModule } from "./modules/login"
 
-import container from './motel/infra/inversify.config'
-
 async function bootstrap() {
   Vue.config.productionTip = false
 
@@ -21,7 +19,7 @@ async function bootstrap() {
 
   new CoreModule(routerModule.router!, storeModule.store!).install(Vue)
   new LoginModule(routerModule.router!, storeModule.store!).install(Vue)
-  await new HomeModule(routerModule.router!, storeModule.store!, container).install(Vue)
+  await new HomeModule(routerModule.router!, storeModule.store!).install(Vue)
   new AboutModule(routerModule.router!, storeModule.store!).install(Vue)
 }
 

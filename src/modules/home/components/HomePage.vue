@@ -2,7 +2,7 @@
   <div class="full-width">
     <h1 class=" center-content">Hello World!</h1>
 
-    <PageInit v-if="!isInitialized" @submit="handleInit" />
+    <PageInit v-if="!isInitialized" @submit="handleInitMotel" />
 
   </div>
 </template>
@@ -24,8 +24,7 @@ export default {
   },
   methods: {
     ...mapActions([ INIT_MOTEL ]),
-    handleInit(data) {
-      console.log('dataa submit ', data)
+    handleInitMotel(data) {
       this[INIT_MOTEL](data)
     }
   }

@@ -5,7 +5,7 @@ import { ChecklistsDefaultGetInteractor } from "src/motel/checklist/interactor/C
 
 export const getters = {
     getChecklistsDefaultInteractor: () : ChecklistsDefaultGetInteractor =>    {
-        return container.get<ChecklistsDefaultGetInteractor>(TYPES.InitMotelInteractor)
+        return container.get<ChecklistsDefaultGetInteractor>(TYPES.ChecklistsDefaultGetInteractor)
     },
     initMotelInteractor: () : MotelInitInteractor =>   {
         return container.get<MotelInitInteractor>(TYPES.InitMotelInteractor)

@@ -3,7 +3,6 @@ export type ChecklistItem = {
     label: string;
 }
 
-
 export interface ChecklistRepository {
     getDefaultChecklists() : Promise<Record<string, ChecklistItem[]>>
 }

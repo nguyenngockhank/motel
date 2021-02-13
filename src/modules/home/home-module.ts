@@ -4,21 +4,15 @@ import VueRouter from 'vue-router'
 import { homeRoutes } from './router'
 import { Store } from 'vuex'
 import { homeStore } from './store'
-import { AppContainer, TYPES  } from 'src/motel/domain/di-container'
-import { ChecklistsDefaultGetInteractor } from 'src/motel/checklist/interactor/ChecklistsDefaultGetInteractor'
-import { INIT_CHECKLIST_OPTIONS } from './store/action-types'
+import { LOAD_CHECKLIST_OPTIONS } from './store/action-types'
 
 export class HomeModule implements VueModule {
   readonly name = 'home'
-  constructor(private router: VueRouter, private store: Store<any>, private diContainer : AppContainer ) {}
+  constructor(private router: VueRouter, private store: Store<any> ) {}
 
   async install(Vue: typeof _Vue) {
     this.router.addRoutes(homeRoutes)
     this.store.registerModule([this.name], homeStore)
-
-    // init data in store
-    const service = this.diContainer.get<ChecklistsDefaultGetInteractor>(TYPES.ChecklistsDefaultGetInteractor)
-    const data = await service.execute();
-    this.store.dispatch(`${this.name}/${INIT_CHECKLIST_OPTIONS}`, data)
+    await this.store.dispatch(`${this.name}/${LOAD_CHECKLIST_OPTIONS}`)
   }
 }

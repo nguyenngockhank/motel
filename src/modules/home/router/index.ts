@@ -1,10 +1,10 @@
 import { RouteConfig } from 'vue-router'
-import HelloWorld from '../components/HelloWorld.vue'
+import HomePage from '../components/HomePage.vue'
 
 export const homeRoutes: RouteConfig[] = [
     {
         path: '/home',
         name: 'Home',
-        component: HelloWorld,
+        component: HomePage,
     }
 ]

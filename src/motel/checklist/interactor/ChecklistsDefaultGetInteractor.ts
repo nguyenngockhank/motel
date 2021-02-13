@@ -9,6 +9,6 @@ export class ChecklistsDefaultGetInteractor {
     ) {}
 
     execute() : Promise<Record<string, ChecklistItem[]>>{
-        return this.checklistRepo.getDefaultChecklists();
+        return this.checklistRepo.getDefaultChecklists()
     }
 }
