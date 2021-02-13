@@ -7,11 +7,13 @@ export {
 }
 
 export const TYPES = {
-    // checklist module
+    // checklist
     ChecklistsDefaultGetInteractor: 'ChecklistsDefaultGetInteractor',
     ChecklistRepository: 'ChecklistRepository',
 
-    // init motel
+    // motel
     MotelSetting: 'MotelSetting',
-    InitMotelInteractor: 'InitMotelInteractor',
+    MotelInitInteractor: 'InitMotelInteractor',
+    MotelLoadInteractor: 'LoadMotelInteractor',
+    
 }

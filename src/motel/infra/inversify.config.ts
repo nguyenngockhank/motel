@@ -14,9 +14,11 @@ container.bind<ChecklistsDefaultGetInteractor>(TYPES.ChecklistsDefaultGetInterac
 
 
 import { MotelSetting } from "../motel/domain/MotelSetting";
-import { MotelInitInteractor } from "../motel/interactor/MotelInitInteractor";
 import { LocalStorageMotelSetting } from "../motel/infra/LocalStorageMotelSetting";
+import { MotelInitInteractor } from "../motel/interactor/MotelInitInteractor";
+import { MotelLoadInteractor } from "../motel/interactor/MotelLoadInteractor";
 
 container.bind<MotelSetting>(TYPES.MotelSetting).to(LocalStorageMotelSetting)
-container.bind<MotelInitInteractor>(TYPES.InitMotelInteractor).to(MotelInitInteractor)
+container.bind<MotelInitInteractor>(TYPES.MotelInitInteractor).to(MotelInitInteractor)
+container.bind<MotelLoadInteractor>(TYPES.MotelLoadInteractor).to(MotelLoadInteractor)
 

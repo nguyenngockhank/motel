@@ -10,12 +10,9 @@ export class AppLocalStorage {
         localStorage.setItem(privateKey, JSON.stringify(value))
     }
     
-    getItem<T>(key: string, rawValue = false): T | string | null {
+    getItem<T>(key: string): T | null {
         const privateKey = this.privateKey(key);
         const value = localStorage.getItem(privateKey)
-        if (rawValue) {
-            return value; // type string or null
-        }
         return !value ? null : JSON.parse(value);
     }
     

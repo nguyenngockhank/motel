@@ -3,6 +3,10 @@
     <h1 class=" center-content">Hello World!</h1>
 
     <PageInit v-if="!isInitialized" @submit="handleInitMotel" />
+    <div v-else>
+      <h2>{{ name }}</h2>
+      <em><p>{{ slogan }}</p></em>
+    </div>
 
   </div>
 </template>
@@ -13,17 +17,22 @@ import { createHomeStoreHelper } from '../store'
 const { mapActions, mapState } = createHomeStoreHelper()
 
 
-import { INIT_MOTEL } from '../store/action-types'
+import { INIT_MOTEL, LOAD_MOTEL } from '../store/action-types'
 
 export default {
   components: { PageInit },
   computed: {
     ...mapState({
       isInitialized: state => state.isInitialized,
+      name: state => state.motel.name,
+      slogan: state => state.motel.slogan,
     })
   },
+  async created() {
+    await this[LOAD_MOTEL]()
+  },
   methods: {
-    ...mapActions([ INIT_MOTEL ]),
+    ...mapActions([ INIT_MOTEL, LOAD_MOTEL ]),
     handleInitMotel(data) {
       this[INIT_MOTEL](data)
     }
