@@ -39,7 +39,8 @@
 
 <script>
 import { createHomeStoreHelper } from '../../store'
-const { mapState } = createHomeStoreHelper()
+import { LOAD_CHECKLIST_OPTIONS } from '../../store/action-types';
+const { mapState, mapActions } = createHomeStoreHelper()
 
 export default {
     data() {
@@ -53,16 +54,12 @@ export default {
     computed: {
         ...mapState(['defaultChecklists']),
     },
-    watch: {
-        defaultChecklists: {
-            immediate: true,
-            handler(val) {
-                // this value change only once
-                this.checkAllList();
-            }
-        }
+    async created(){
+        await this[LOAD_CHECKLIST_OPTIONS]()
+        this.checkAllList()
     },
     methods : {
+        ...mapActions([ LOAD_CHECKLIST_OPTIONS ]),
         back() {
             this.$emit('back')
         },

@@ -19,7 +19,7 @@ async function bootstrap() {
 
   new CoreModule(routerModule.router!, storeModule.store!).install(Vue)
   new LoginModule(routerModule.router!, storeModule.store!).install(Vue)
-  await new HomeModule(routerModule.router!, storeModule.store!).install(Vue)
+  new HomeModule(routerModule.router!, storeModule.store!).install(Vue)
   new AboutModule(routerModule.router!, storeModule.store!).install(Vue)
 }
 
