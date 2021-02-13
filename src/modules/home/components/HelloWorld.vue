@@ -2,33 +2,31 @@
   <div class="full-width">
     <h1 class=" center-content">Hello World!</h1>
 
-    <PageInit @submit="handleInit" />
+    <PageInit v-if="!isInitialized" @submit="handleInit" />
 
   </div>
 </template>
 
 <script>
 import PageInit from './init/PageInit'
+import { createHomeStoreHelper } from '../store'
+const { mapActions, mapState } = createHomeStoreHelper()
 
-import { createNamespacedHelpers } from 'vuex'
-const { mapState, mapActions } = createNamespacedHelpers('home')
-import { INCREASE_COUNT } from '../store/action-types'
+
+import { INIT_MOTEL } from '../store/action-types'
 
 export default {
   components: { PageInit },
- 
   computed: {
     ...mapState({
-      count: state => state.testCount,
+      isInitialized: state => state.isInitialized,
     })
   },
   methods: {
-    ...mapActions([ INCREASE_COUNT ]),
-    handleClick() {
-      this[INCREASE_COUNT](10)
-    },
+    ...mapActions([ INIT_MOTEL ]),
     handleInit(data) {
       console.log('dataa submit ', data)
+      this[INIT_MOTEL](data)
     }
   }
 }

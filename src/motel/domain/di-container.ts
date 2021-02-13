@@ -11,5 +11,7 @@ export const TYPES = {
     ChecklistsDefaultGetInteractor: 'ChecklistsDefaultGetInteractor',
     ChecklistRepository: 'ChecklistRepository',
 
-    //
+    // init motel
+    MotelSetting: 'MotelSetting',
+    InitMotelInteractor: 'InitMotelInteractor',
 }

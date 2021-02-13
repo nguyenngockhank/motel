@@ -3,12 +3,14 @@ import { Module } from 'vuex'
 import { HomeState, initialState } from './state'
 import { mutations } from './mutations'
 import { actions } from './actions'
+import { getters } from './getters'
 
 export const homeStore: Module<any, HomeState> = {
   namespaced: true,
   state: initialState,
   actions,
   mutations,
+  getters,
 }
 
 

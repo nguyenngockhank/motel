@@ -61,9 +61,13 @@ export default {
             this.checklistInfo = data
             // 
             this.$emit('submit', {
-                motelInfo: this.motelInfo,
-                roomInfo: this.roomInfo,
-                checklistInfo: this.checklistInfo,
+                motel: {
+                    name: this.motelInfo.name,
+                    slogan: this.motelInfo.slogan,
+                    numberOfRooms: this.roomInfo.numberOfRooms,
+                    priceOfRoom: this.roomInfo.priceOfRoom,
+                },
+                checklists: this.checklistInfo,
             })
         },
     }

@@ -75,6 +75,9 @@ export default {
         checkAllList() {
             ['beforeCheckInList', 'afterCheckInList', 'beforeCheckOutList', 'afterCheckOutList'].map(
                 key => {
+                    if (!this.defaultChecklists[key]) {
+                        return
+                    }
                     this[key] = this.defaultChecklists[key].map(item => item.value)
                 }
             )
