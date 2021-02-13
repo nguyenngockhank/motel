@@ -13,11 +13,9 @@
 
 <script>
 import PageInit from './init/PageInit'
-import { createHomeStoreHelper } from '../store'
+import { createHomeStoreHelper, ACTION_TYPES } from '../store'
 const { mapActions, mapState } = createHomeStoreHelper()
-
-
-import { INIT_MOTEL, LOAD_MOTEL } from '../store/action-types'
+const { INIT_MOTEL, LOAD_MOTEL } = ACTION_TYPES
 
 export default {
   components: { PageInit },

@@ -1,7 +1,8 @@
 import { ChecklistItem } from "src/motel/checklist/domain/Checklist";
-import { INIT_MOTEL, LOAD_CHECKLIST_OPTIONS } from "./action-types";
-import { InitMotelPayload } from "./actions";
+import { ACTION_TYPES, InitMotelPayload } from "./actions";
 import { HomeState } from './state'
+
+const { LOAD_CHECKLIST_OPTIONS, INIT_MOTEL } = ACTION_TYPES
 
 var mutations = {};
 
@@ -16,4 +17,4 @@ mutations[INIT_MOTEL] = (state: HomeState, data: InitMotelPayload) => {
     state.isInitialized = true
 } 
 
-export { mutations } ;
+export { mutations }

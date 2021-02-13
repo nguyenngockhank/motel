@@ -38,9 +38,10 @@
 </template>
 
 <script>
-import { createHomeStoreHelper } from '../../store'
-import { LOAD_CHECKLIST_OPTIONS } from '../../store/action-types';
+import { createHomeStoreHelper, ACTION_TYPES } from '../../store'
 const { mapState, mapActions } = createHomeStoreHelper()
+
+const { LOAD_CHECKLIST_OPTIONS } = ACTION_TYPES
 
 export default {
     data() {

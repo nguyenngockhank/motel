@@ -4,6 +4,12 @@ import { MotelInitInteractor } from "src/motel/motel/interactor/MotelInitInterac
 import { ChecklistsDefaultGetInteractor } from "src/motel/checklist/interactor/ChecklistsDefaultGetInteractor"
 import { MotelLoadInteractor } from "src/motel/motel/interactor/MotelLoadInteractor"
 
+export type HomeGetters = {
+    getChecklistsDefaultInteractor: ChecklistsDefaultGetInteractor;
+    initMotelInteractor: MotelInitInteractor;
+    loadMotelInteractor: MotelLoadInteractor;
+}
+
 export const getters = {
     getChecklistsDefaultInteractor: () : ChecklistsDefaultGetInteractor =>    {
         return container.get<ChecklistsDefaultGetInteractor>(TYPES.ChecklistsDefaultGetInteractor)
@@ -14,10 +20,4 @@ export const getters = {
     loadMotelInteractor: () : MotelLoadInteractor =>   {
         return container.get<MotelLoadInteractor>(TYPES.MotelLoadInteractor)
     },
-}
-
-export type HomeGetters = {
-    getChecklistsDefaultInteractor: ChecklistsDefaultGetInteractor;
-    initMotelInteractor: MotelInitInteractor;
-    loadMotelInteractor: MotelLoadInteractor;
 }

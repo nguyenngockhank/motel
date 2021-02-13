@@ -1,7 +1,16 @@
 import { ActionContext as VueXActContext } from "vuex";
 import { HomeGetters } from "./getters";
-import { LOAD_CHECKLIST_OPTIONS, INIT_MOTEL, LOAD_MOTEL } from "./action-types"
 import { HomeState } from "./state";
+
+
+export enum ACTION_TYPES {
+    LOAD_CHECKLIST_OPTIONS = 'LOAD_CHECKLIST_OPTIONS',
+    LOAD_MOTEL = 'LOAD_MOTEL',
+    INIT_MOTEL = 'INIT_MOTEL',
+}
+
+const { LOAD_CHECKLIST_OPTIONS, LOAD_MOTEL, INIT_MOTEL } = ACTION_TYPES
+
 
 type ActionContext = Omit<VueXActContext<HomeState, null>, "getters"> & {
     getters: HomeGetters
@@ -28,7 +37,6 @@ actions[INIT_MOTEL] = async ({ getters, commit } : ActionContext, payload: InitM
 }
 
 
-/// can override action here :D
 export type InitMotelPayload = {
     motel : {
         name: string;
@@ -38,7 +46,6 @@ export type InitMotelPayload = {
     };
     checklists: Record<string, string[]>;
 }
-
 
 
 export { actions };
