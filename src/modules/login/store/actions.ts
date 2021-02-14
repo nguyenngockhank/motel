@@ -1,18 +1,28 @@
-import { LOGIN } from "./action-types";
+import { ActionContext, ACTION_TYPES, MUTATION_TYPES, LoginPayload } from "./action-types";
 
-type LoginPayload = {
-    account: string;
-    password: string;
+
+const { LOGIN, LOAD_SESSION } = ACTION_TYPES
+const { SET_IS_LOGIN } = MUTATION_TYPES
+
+var actions = {}
+
+actions[LOGIN] = async ({ getters, commit } : ActionContext, payload : LoginPayload ) =>  {
+    const isSuccess = await getters.logInInteractor.execute({
+        username: payload.account,
+        password: payload.password,
+    })
+
+    if (isSuccess) {
+        commit(SET_IS_LOGIN, true)
+    }
 }
 
-var actions = {
-    [LOGIN]({ commit }, payload : LoginPayload ) {
-        const { account, password } = payload;
 
-        const isSuccess = account.toLowerCase() === 'tronhakhanh' 
-                            && password.toLowerCase() === 'hiphopneverdie'
+actions[LOAD_SESSION] = async ({ getters, commit }: ActionContext) => {
+    const hasSession = await getters.userHasSessionInteractor.execute()
 
-        commit('setIsLogin', isSuccess)
+    if (hasSession) {
+        commit(SET_IS_LOGIN, true)
     }
 }
 

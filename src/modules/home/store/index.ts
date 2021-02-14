@@ -1,11 +1,12 @@
 
-import { Module } from 'vuex'
+import { Module, createNamespacedHelpers } from 'vuex'
 import { HomeState, initialState } from './state'
 import { mutations } from './mutations'
-import { actions, ACTION_TYPES } from './actions'
+import { actions } from './actions'
+import { ACTION_TYPES } from "./action-types"
 import { getters } from './getters'
 
-export type HomeStore = typeof homeStore
+export { ACTION_TYPES }
 
 export const homeStore: Module<any, HomeState> = {
   namespaced: true,
@@ -16,9 +17,7 @@ export const homeStore: Module<any, HomeState> = {
 }
 
 
-export { ACTION_TYPES }
 
-import { createNamespacedHelpers } from 'vuex'
 export function createHomeStoreHelper() {
   return createNamespacedHelpers('home');
 }

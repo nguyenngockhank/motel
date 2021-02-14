@@ -1,11 +1,9 @@
-import { initSession } from './session';
+import { MUTATION_TYPES } from './action-types';
 import { LoginState } from './state'
 
+
 export const mutations = {
-    setIsLogin: (state: LoginState, isLogin = true) => {
+    [MUTATION_TYPES.SET_IS_LOGIN]: (state: LoginState, isLogin = true) => {
         state.isLogin = isLogin
-        if (isLogin) {
-            initSession()
-        }
     }
 };

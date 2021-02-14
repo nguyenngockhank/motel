@@ -1,4 +1,3 @@
-import { LOGIN } from "src/modules/login/store/action-types";
 import { injectable } from "src/motel/domain/di-container";
 import { AppLocalStorage } from "src/motel/infra/AppLocalStorage";
 import { Motel } from "../domain/Motel";

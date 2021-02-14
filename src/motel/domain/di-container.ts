@@ -7,6 +7,12 @@ export {
 }
 
 export const TYPES = {
+    // authenication
+    Authentifier: 'Authentifier',
+    UserRepository: 'UserRepository',
+    UserLogInInteractor: 'UserLogInInteractor',
+    UserHasSessionInteractor: 'UserHasSessionInteractor',
+
     // checklist
     ChecklistsDefaultGetInteractor: 'ChecklistsDefaultGetInteractor',
     ChecklistRepository: 'ChecklistRepository',

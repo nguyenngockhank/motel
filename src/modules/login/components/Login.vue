@@ -24,9 +24,10 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex'
-const { mapState, mapActions } = createNamespacedHelpers('login')
-import { LOGIN } from '../store/action-types'
+import { createLoginStoreHelper, ACTION_TYPES } from '../store'
+
+const { mapState, mapActions } = createLoginStoreHelper()
+const { LOGIN, LOAD_SESSION } = ACTION_TYPES
 
 export default {
   data() {
@@ -53,8 +54,11 @@ export default {
       immediate: true,
     }
   },
+  created() {
+    this[LOAD_SESSION]()
+  },
   methods: {
-    ...mapActions([ LOGIN ]),
+    ...mapActions([ LOGIN, LOAD_SESSION ]),
     submitForm() {
       this[LOGIN](this.form);
     },

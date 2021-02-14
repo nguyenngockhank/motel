@@ -1,16 +1,17 @@
 import { ChecklistItem } from "src/motel/checklist/domain/Checklist";
-import { ACTION_TYPES, InitMotelPayload } from "./actions";
+import { InitMotelPayload } from "./actions";
+import { MUTATION_TYPES } from "./action-types";
 import { HomeState } from './state'
 
-const { LOAD_CHECKLIST_OPTIONS, INIT_MOTEL } = ACTION_TYPES
+const { SET_CHECKLIST_OPTIONS, SET_MOTEL_INFO } = MUTATION_TYPES
 
 var mutations = {};
 
-mutations[LOAD_CHECKLIST_OPTIONS] = (state: HomeState, data: Record<string, ChecklistItem[]>) => {
+mutations[SET_CHECKLIST_OPTIONS] = (state: HomeState, data: Record<string, ChecklistItem[]>) => {
     state.defaultChecklists = data
 }
 
-mutations[INIT_MOTEL] = (state: HomeState, data: InitMotelPayload) => {
+mutations[SET_MOTEL_INFO] = (state: HomeState, data: InitMotelPayload) => {
     state.motel.name = data.motel.name
     state.motel.slogan = data.motel.slogan
     state.motel.numberOfRooms = data.motel.numberOfRooms
