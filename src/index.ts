@@ -5,7 +5,6 @@ import Vue from "vue"
 import { CoreModule, RouterModule, StoreModule } from "./modules/core"
 
 import { HomeModule } from "./modules/home" 
-import { AboutModule } from "./modules/about"
 import { LoginModule } from "./modules/login"
 
 async function bootstrap() {
@@ -20,7 +19,6 @@ async function bootstrap() {
   new CoreModule(routerModule.router!, storeModule.store!).install(Vue)
   new LoginModule(routerModule.router!, storeModule.store!).install(Vue)
   new HomeModule(routerModule.router!, storeModule.store!).install(Vue)
-  new AboutModule(routerModule.router!, storeModule.store!).install(Vue)
 }
 
 bootstrap()

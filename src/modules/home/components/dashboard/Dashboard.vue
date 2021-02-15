@@ -9,7 +9,7 @@
             <div slot="header" class="clearfix">
                 <span>{{ room.label || `#${room.id}` }}</span>
 
-                <el-button class="operation-btn" type="primary" icon="el-icon-more">Operation button</el-button>
+                <el-button class="operation-btn" type="primary" icon="el-icon-more" />
             </div>
             <div v-for="o in 4" :key="o" class="text item">
                 {{'List item ' + o }}
@@ -42,6 +42,5 @@ export default {
 }
 .operation-btn {
     float: right; 
-    padding: 3px 0;
 }
 </style>
