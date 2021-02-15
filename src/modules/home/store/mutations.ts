@@ -1,8 +1,10 @@
 import { ChecklistItem } from "src/motel/checklist/domain/Checklist";
+import { Motel } from "src/motel/motel/domain/Motel";
+import { Room } from "src/motel/motel/domain/Room";
 import { InitMotelPayload, MUTATION_TYPES } from "./action-types";
 import { HomeState } from './state'
 
-const { SET_CHECKLIST_OPTIONS, SET_MOTEL_INFO } = MUTATION_TYPES
+const { SET_CHECKLIST_OPTIONS, SET_MOTEL_INFO, SET_ROOMS } = MUTATION_TYPES
 
 var mutations = {};
 
@@ -10,11 +12,15 @@ mutations[SET_CHECKLIST_OPTIONS] = (state: HomeState, data: Record<string, Check
     state.defaultChecklists = data
 }
 
-mutations[SET_MOTEL_INFO] = (state: HomeState, data: InitMotelPayload) => {
-    state.motel.name = data.motel.name
-    state.motel.slogan = data.motel.slogan
-    state.motel.numberOfRooms = data.motel.numberOfRooms
+mutations[SET_MOTEL_INFO] = (state: HomeState, motel : Motel) => {
+    state.motel.name = motel.name
+    state.motel.slogan = motel.slogan
+    state.motel.numberOfRooms = motel.numberOfRooms
     state.isInitialized = true
 } 
+
+mutations[SET_ROOMS] = (state: HomeState, rooms: Room[]) => {
+    state.rooms = rooms
+}
 
 export { mutations }

@@ -14,6 +14,7 @@ export enum ACTION_TYPES {
 
 export enum MUTATION_TYPES { 
     SET_MOTEL_INFO = 'setMotelInfo',
+    SET_ROOMS = 'setRooms',
     SET_CHECKLIST_OPTIONS = 'setChecklistOptions'
 }
 

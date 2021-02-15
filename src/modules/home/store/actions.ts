@@ -2,7 +2,7 @@ import { ActionContext, ACTION_TYPES, InitMotelPayload, MUTATION_TYPES } from ".
 
 
 const { LOAD_CHECKLIST_OPTIONS, LOAD_MOTEL, INIT_MOTEL } = ACTION_TYPES
-const { SET_CHECKLIST_OPTIONS, SET_MOTEL_INFO } = MUTATION_TYPES
+const { SET_CHECKLIST_OPTIONS, SET_MOTEL_INFO, SET_ROOMS } = MUTATION_TYPES
 
 var actions = {}
 
@@ -16,7 +16,8 @@ actions[LOAD_MOTEL] = async ({ getters, commit } : ActionContext ) => {
     if (data) {
         console.log("... motel info", data);
         
-        commit(SET_MOTEL_INFO, { motel: data.motel })
+        commit(SET_MOTEL_INFO, data.motel)
+        commit(SET_ROOMS, data.rooms)
     }
 }
 

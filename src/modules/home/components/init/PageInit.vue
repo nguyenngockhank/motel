@@ -1,5 +1,9 @@
 <template>
 <div>
+
+
+
+    <h1>Initialization Step!</h1>
     <el-steps :active="currentStep" 
         simple 
         finish-status="success"
