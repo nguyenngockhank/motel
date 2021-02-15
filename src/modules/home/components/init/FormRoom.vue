@@ -21,7 +21,7 @@ export default {
     data() {
         return {
             form: {
-                numberOfRooms: 1,
+                numberOfRooms: 10,
                 priceOfRoom: 2000000,
             }
         };

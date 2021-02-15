@@ -1,6 +1,6 @@
-import { TYPES, inject, injectable } from "src/motel/domain/di-container";
-import { AppIndexedDB } from "src/motel/infra/IndexedDb/AppIndexedDB";
-import { AppObjectStore } from "src/motel/infra/IndexedDb/AppObjectStore";
+import { TYPES, inject, injectable } from "src/motel/shared/domain/di-container";
+import { AppIndexedDB } from "src/motel/shared/infra/IndexedDb/AppIndexedDB";
+import { AppObjectStore } from "src/motel/shared/infra/IndexedDb/AppObjectStore";
 import { Room } from "../domain/Room";
 import { RoomRepository } from "../domain/RoomRepository";
 

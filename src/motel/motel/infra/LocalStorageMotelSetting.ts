@@ -1,5 +1,5 @@
-import { injectable } from "src/motel/domain/di-container";
-import { AppLocalStorage } from "src/motel/infra/AppLocalStorage";
+import { injectable } from "src/motel/shared/domain/di-container";
+import { AppLocalStorage } from "src/motel/shared/infra/AppLocalStorage";
 import { Motel } from "../domain/Motel";
 import { MotelCreateInput, MotelSetting } from "../domain/MotelSetting";
 

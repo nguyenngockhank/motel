@@ -1,4 +1,4 @@
-import { injectable } from "src/motel/domain/di-container";
+import { injectable } from "src/motel/shared/domain/di-container";
 import { ChecklistItem, ChecklistRepository } from "../domain/Checklist";
 import { CHECKLISTS } from "./checklists";
 

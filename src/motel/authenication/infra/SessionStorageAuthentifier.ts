@@ -1,4 +1,4 @@
-import { injectable } from "src/motel/domain/di-container";
+import { injectable } from "src/motel/shared/domain/di-container";
 import { Authentifier, LogInAttempt } from "../domain/Authentifier";
 
 const PREFIX = '__trocuatui__'

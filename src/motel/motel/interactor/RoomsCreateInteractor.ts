@@ -1,4 +1,4 @@
-import { inject, injectable, TYPES } from "src/motel/domain/di-container";
+import { inject, injectable, TYPES } from "src/motel/shared/domain/di-container";
 import { Motel } from "../domain/Motel";
 import { Room } from "../domain/Room";
 import { RoomRepository } from "../domain/RoomRepository";

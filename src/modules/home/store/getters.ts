@@ -1,5 +1,5 @@
-import container from "src/motel/infra/inversify.config"
-import { TYPES } from "src/motel/domain/di-container"
+import container from "src/motel/shared/infra/inversify.config"
+import { TYPES } from "src/motel/shared/domain/di-container"
 import { MotelInitInteractor } from "src/motel/motel/interactor/MotelInitInteractor"
 import { ChecklistsDefaultGetInteractor } from "src/motel/checklist/interactor/ChecklistsDefaultGetInteractor"
 import { MotelLoadInteractor } from "src/motel/motel/interactor/MotelLoadInteractor"
