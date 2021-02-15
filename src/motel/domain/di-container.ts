@@ -7,6 +7,9 @@ export {
 }
 
 export const TYPES = {
+    // shared
+    AppIndexedDB: 'AppIndexedDB',
+
     // authenication
     Authentifier: 'Authentifier',
     UserRepository: 'UserRepository',
@@ -22,4 +25,7 @@ export const TYPES = {
     MotelInitInteractor: 'InitMotelInteractor',
     MotelLoadInteractor: 'LoadMotelInteractor',
     
+    // rooms
+    RoomRepository: 'RoomRepository',
+    RoomsCreateInteractor: 'RoomsCreateInteractor',
 }

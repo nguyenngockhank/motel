@@ -4,6 +4,10 @@ var container = new AppContainer ();
 export { container };
 export default container;
 
+// -- shared
+import { AppIndexedDB } from "./IndexedDb/AppIndexedDB";
+container.bind<AppIndexedDB>(TYPES.AppIndexedDB).toConstantValue(new AppIndexedDB("TroCuaTui", 1, "TcT")) 
+
 // --- authentication
 import { Authentifier } from "../authenication/domain/Authentifier";
 import { UserRepository } from "../authenication/domain/UserRepository";
@@ -30,8 +34,12 @@ import { MotelSetting } from "../motel/domain/MotelSetting";
 import { LocalStorageMotelSetting } from "../motel/infra/LocalStorageMotelSetting";
 import { MotelInitInteractor } from "../motel/interactor/MotelInitInteractor";
 import { MotelLoadInteractor } from "../motel/interactor/MotelLoadInteractor";
+import { RoomsCreateInteractor } from "../motel/interactor/RoomsCreateInteractor";
+import { RoomRepository } from "../motel/domain/RoomRepository";
+import { IndexedDbRoomRepository } from "../motel/infra/IndexedDbRoomRepository";
 
 container.bind<MotelSetting>(TYPES.MotelSetting).to(LocalStorageMotelSetting)
 container.bind<MotelInitInteractor>(TYPES.MotelInitInteractor).to(MotelInitInteractor)
 container.bind<MotelLoadInteractor>(TYPES.MotelLoadInteractor).to(MotelLoadInteractor)
-
+container.bind<RoomRepository>(TYPES.RoomRepository).to(IndexedDbRoomRepository)
+container.bind<RoomsCreateInteractor>(TYPES.RoomsCreateInteractor).to(RoomsCreateInteractor)

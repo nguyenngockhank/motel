@@ -147,6 +147,13 @@ window.assetUrl  = 'http://localhost/vue-starter/dist/';
 </script>
 ```
 
+## Remove data on local
+
+```js
+delete localStorage.TroCuaTui__MotelInfo 
+delete sessionStorage.__trocuatui__isLogin
+indexedDB.deleteDatabase('TroCuaTui')
+```
 
 ## References
 

@@ -1,6 +1,5 @@
 import { ChecklistItem } from "src/motel/checklist/domain/Checklist";
-import { InitMotelPayload } from "./actions";
-import { MUTATION_TYPES } from "./action-types";
+import { InitMotelPayload, MUTATION_TYPES } from "./action-types";
 import { HomeState } from './state'
 
 const { SET_CHECKLIST_OPTIONS, SET_MOTEL_INFO } = MUTATION_TYPES

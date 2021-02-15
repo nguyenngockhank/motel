@@ -20,6 +20,7 @@ actions[LOAD_MOTEL] = async ({ getters, commit } : ActionContext ) => {
 
 actions[INIT_MOTEL] = async ({ getters, commit } : ActionContext, payload: InitMotelPayload ) => {
     await getters.initMotelInteractor.execute(payload.motel)
+    await getters.createRoomsInteractor.execute({ motel: payload.motel })
     commit(SET_MOTEL_INFO, payload)
 }
 
