@@ -14,7 +14,9 @@ actions[LOAD_CHECKLIST_OPTIONS] = async ({ getters, commit } : ActionContext ) =
 actions[LOAD_MOTEL] = async ({ getters, commit } : ActionContext ) => {
     const data = await getters.loadMotelInteractor.execute()
     if (data) {
-        commit(SET_MOTEL_INFO, { motel: data })
+        console.log("... motel info", data);
+        
+        commit(SET_MOTEL_INFO, { motel: data.motel })
     }
 }
 
