@@ -2,7 +2,7 @@
 <el-card>
     <div slot="header" class="clearfix room-header">
         <el-badge :value="statusLabel" :type="statusType" class="item">
-            <span class="room-label">{{ roomLabel }}</span>
+            <el-link type="primary" class="room-label">{{ roomLabel }}</el-link>
         </el-badge>
         
         <el-dropdown trigger="click" @command="handleCommand">
@@ -11,7 +11,7 @@
             </span>
             <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="deposit">Đóng cọc</el-dropdown-item>
-                <el-dropdown-item command="rent">Cho thuê</el-dropdown-item>
+                <el-dropdown-item command="rent">Thuê phòng</el-dropdown-item>
                 <el-dropdown-item disabled>Action 4</el-dropdown-item>
                 <el-dropdown-item divided>Lịch sử giao dịch</el-dropdown-item>
             </el-dropdown-menu>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="text item">
-        Tiền tháng: {{ roomPrice }}
+        Tiền tháng: {{ price | vnd }}
     </div>
     <div v-for="o in 4" :key="o" class="text item">
         {{'List item ' + o }}
@@ -51,9 +51,6 @@ export default {
         roomLabel() {
             return this.label || `#${this.id}`
         },
-        roomPrice() {
-            return new Intl.NumberFormat().format(this.price)
-        },
         statusLabel() {
             return STATUS_LABEL_MAP[this.status] || STATUS_LABEL_MAP._DEFAULT
         },
@@ -67,6 +64,8 @@ export default {
             switch(command) {
                 case 'rent':
                     console.log('let rentttt')
+                    this.$router.push({ name: 'RoomRenting', params: { id: this.id } })
+                    break;
             }
         }
     }

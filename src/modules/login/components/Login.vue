@@ -2,7 +2,7 @@
 
 <el-row :gutter="20" justify="center">
   <el-col :span="8" :xs="24" >
-    <h1 class=" center-content">Login</h1>
+    <h1 class=" center-content">Đăng nhập</h1>
 
     <el-form :label-position="labelPosition" label-width="120px" :model="form">
       <!-- end header -->
