@@ -3,28 +3,29 @@
     <h1>Welcome to {{ name }}!!!</h1>
     <div><i>{{ slogan }}</i></div>
 
-    <el-col :span="8" :offset="1" v-for="room in rooms" :key="room.id"  >
-        <!-- Rooms with cards -->
-        <el-card>
-            <div slot="header" class="clearfix">
-                <span>{{ room.label || `#${room.id}` }}</span>
+    <el-divider><i class="el-icon-star-on"></i></el-divider>
 
-                <el-button class="operation-btn" type="primary" icon="el-icon-more" />
-            </div>
-            <div v-for="o in 4" :key="o" class="text item">
-                {{'List item ' + o }}
-            </div>
-        </el-card>
-    </el-col>
+    <el-row :gutter="20">
+        <el-col :xs="24" :sm="12" :md="8" :lg="6"
+            class="card-wrapper"
+            v-for="room in rooms" :key="room.id"
+        >
+            <RoomCard v-bind="room" />
+        </el-col>
+    </el-row>
 </div>
 </template>
 
 <script>
+import RoomCard from './RoomCard'
 import { createHomeStoreHelper } from '../../store'
 const { mapState } = createHomeStoreHelper()
 
 
 export default {
+    components: {
+        RoomCard,
+    },
     computed: {
         ...mapState({
             isInitialized: state => state.isInitialized,
@@ -37,10 +38,7 @@ export default {
 </script>
 
 <style scoped>
-.box-card {
-    width: 480px;
-}
-.operation-btn {
-    float: right; 
+.card-wrapper {
+    margin-bottom: 30px;
 }
 </style>

@@ -1,12 +1,10 @@
 <template>
 
 <el-row :gutter="20" justify="center">
-  <el-col :span="8" >
+  <el-col :span="8" :xs="24" >
+    <h1 class=" center-content">Login</h1>
 
     <el-form :label-position="labelPosition" label-width="120px" :model="form">
-      <el-form-item>
-        <h1 class=" center-content">Login</h1>
-      </el-form-item>
       <!-- end header -->
       <el-form-item label="Account">
         <el-input v-model="form.account"></el-input>
@@ -32,7 +30,7 @@ const { LOGIN, LOAD_SESSION } = ACTION_TYPES
 export default {
   data() {
     return {
-      labelPosition: 'right',
+      labelPosition: 'top',
       form: {
         account: '',
         password: '',
