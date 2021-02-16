@@ -1,3 +1,3 @@
-export { CoreModule } from "./core-module";
-export { RouterModule } from "./router-module";
-export { StoreModule } from "./store-module";
+export { CoreModule } from "./CoreModule";
+export { RouterModule } from "./RouterModule";
+export { StoreModule } from "./StoreModule";

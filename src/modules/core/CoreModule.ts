@@ -1,17 +1,12 @@
-import { Vue as _Vue } from 'vue/types/vue'
-import { VueModule } from 'vue-modules'
-import VueRouter from 'vue-router'
-import { Store } from 'vuex'
-
 import ElementUI from 'element-ui'
+import { Vue as _Vue } from 'vue/types/vue'
 import 'element-ui/lib/theme-chalk/index.css'
 
 import App from "./components/App.vue"
+import { BaseModule } from './baseModule'
 
-export class CoreModule implements VueModule {
+export class CoreModule extends BaseModule {
   readonly name = 'core'
-
-  constructor(private router: VueRouter, private store: Store<any>) {}
 
   private get isAuthenticated() {
     if (!this.store.state.login) {
