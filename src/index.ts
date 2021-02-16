@@ -2,11 +2,11 @@
 __webpack_public_path__ = (window as any).assetUrl || '';
 import "reflect-metadata"
 import Vue from "vue"
-import { CoreModule, RouterModule, StoreModule } from "./modules/core"
+import { CoreModule, RouterModule, StoreModule } from "./ui/core"
 
-import { HomeModule } from "./modules/home" 
-import { LoginModule } from "./modules/login"
-import { RoomModule } from "./modules/room"
+import { HomeModule } from "./ui/home" 
+import { LoginModule } from "./ui/login"
+import { RoomModule } from "./ui/room"
 
 async function bootstrap() {
   Vue.config.productionTip = false
