@@ -1,7 +1,7 @@
 import { RouteConfig } from 'vue-router'
-import Login from '../components/Login.vue'
+import Login from './components/Login.vue'
 
-export const homeRoutes: RouteConfig[] = [
+export const loginRoutes: RouteConfig[] = [
     {
         path: '/',
         name: 'Login',
