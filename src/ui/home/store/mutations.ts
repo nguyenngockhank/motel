@@ -1,7 +1,7 @@
 import { ChecklistItem } from "src/motel/checklist/domain/Checklist";
 import { Motel } from "src/motel/motel/domain/Motel";
 import { Room } from "src/motel/motel/domain/Room";
-import { InitMotelPayload, MUTATION_TYPES } from "./action-types";
+import {  MUTATION_TYPES } from "./action-types";
 import { HomeState } from './state'
 
 const { SET_CHECKLIST_OPTIONS, SET_MOTEL_INFO, SET_ROOMS } = MUTATION_TYPES

@@ -43,3 +43,10 @@ container.bind<MotelInitInteractor>(TYPES.MotelInitInteractor).to(MotelInitInter
 container.bind<MotelLoadInteractor>(TYPES.MotelLoadInteractor).to(MotelLoadInteractor)
 container.bind<RoomRepository>(TYPES.RoomRepository).to(IndexedDbRoomRepository)
 container.bind<RoomsCreateInteractor>(TYPES.RoomsCreateInteractor).to(RoomsCreateInteractor)
+
+// -- payment
+import { PaymentInfoCalculateInteractor } from "../../payment/interactor/PaymentInfoCalculateInteractor";
+import { PaymentCalculator } from "../../payment/domain/PaymentCalculator";
+
+container.bind<PaymentCalculator>(TYPES.PaymentCalculator).to(PaymentCalculator)
+container.bind<PaymentInfoCalculateInteractor>(TYPES.PaymentInfoCalculateInteractor).to(PaymentInfoCalculateInteractor)

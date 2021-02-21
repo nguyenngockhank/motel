@@ -7,7 +7,7 @@ export abstract class RoomRepository {
 
     abstract getAll() : Promise<Room[]>;
 
-    // abstract getById(roomId: string) : Promise<Room | null>;
+    abstract getById(roomId: string) : Promise<Room | null>;
 
     abstract create(room: Room) : Promise<void>;
 
@@ -16,7 +16,7 @@ export abstract class RoomRepository {
 
         const result : Room[] = [];
         for(var i = 1; i <= numberOfRooms; i++) {
-            const roomId = `${i}`.padStart(5, '0') 
+            const roomId = this.generateId(i)
             const room : Room = { 
                 id: roomId,
                 price: priceOfRoom,
@@ -25,5 +25,9 @@ export abstract class RoomRepository {
             result.push(room);
         }
         return result;
+    }
+
+    protected generateId(roomIndex: number) : string {
+        return `${roomIndex}`.padStart(5, '0') 
     }
 }

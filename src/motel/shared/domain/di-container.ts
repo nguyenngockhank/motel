@@ -28,4 +28,9 @@ export const TYPES = {
     // rooms
     RoomRepository: 'RoomRepository',
     RoomsCreateInteractor: 'RoomsCreateInteractor',
+
+    // payment
+    PaymentCalculator: 'PaymentCalculator',
+    PaymentInfoCalculateInteractor: 'PaymentInfoCalculateInteractor',
+    
 }

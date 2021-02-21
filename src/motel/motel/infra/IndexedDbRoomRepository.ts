@@ -22,7 +22,13 @@ export class IndexedDbRoomRepository extends RoomRepository {
         const objectStore = await this.objectStore()
         const result = await objectStore.readAll<Room>()
         console.log("--- READ ALL ", result);
-        return result;
+        return result
+    }
+
+    async getById(roomId: string): Promise<Room> {
+        const objectStore = await this.objectStore()
+        const result = await objectStore.read<Room>(roomId)
+        return result
     }
 
     async create(room: Room): Promise<void> {

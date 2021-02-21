@@ -18,24 +18,27 @@
     <div>
         <span><strong>Số tiền / tháng</strong>: {{ vndPricePerMonth }} ({{ daysToNextMonth }} ngày)</span>
     </div>
-    <div>
-        <span><strong>Số tiền / ngày</strong>: {{ vndPricePerDay }}</span>
-    </div>
 
     <el-divider><i class="el-icon-star-on"></i></el-divider>
 
     <h2>Thanh toán</h2>
 
+    {{ paymentInfo }}
+
     <el-form  label-position="top" label-width="150px">
         <el-form-item label="Số tiền" >
-            <el-input-number v-model="netAmount" :min="0" :step="100000"></el-input-number>
+            <el-input-number v-model="netAmount" 
+                :min="0" :step="100000"
+                @change="calculatePayment" />
         </el-form-item>
 
-        <el-form-item label="Ngày thanh toán" >
+        <el-form-item label="Ngày bắt đầu" >
             <el-date-picker
-                v-model="processedDate"
+                v-model="startDate"
                 type="date"
-                placeholder="Pick a day" />
+                placeholder="Pick a day" 
+                @change="calculatePayment"
+            />
         </el-form-item>
 
         <el-form-item label="Ngày đáo hạn" >
@@ -54,81 +57,53 @@
 </template>
 
 <script>
-import { createRoomStoreHelper } from '../../store'
-const { mapGetters } = createRoomStoreHelper()
+import { createRoomStoreHelper, ACTION_TYPES } from '../../store'
+const {  mapState, mapActions } = createRoomStoreHelper()
+const { CALCULATE_PAYMENT_INFO } = ACTION_TYPES
 
-function daysToNextMonth(startDate) {
-    const dateFrom = new Date(startDate)
-
-    const nextMonthDate = new Date(dateFrom)
-    nextMonthDate.setMonth(nextMonthDate.getMonth() + 1)
-
-    const diffTime = Math.abs(nextMonthDate - dateFrom)
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24)) 
-}
  
 export default {
     data() {
         return {
             netAmount: 0,
-            processedDate: new Date(),
+            startDate: new Date(),
+            dueDate: new Date(),
         }
     },
     computed: {
-        ...mapGetters(['getRoomInfo']),
+        ...mapState({
+            paymentInfo: state => state.renting.paymentInfo,
+        }),
         roomId() {
-            return this.$route.params.id
-        },
-        roomInfo() {
-            return this.getRoomInfo(this.roomId)
+            return this.$route.params.id;
         },
         roomPrice() {
-            return this.roomInfo ? this.roomInfo.price : 1
+          return this.paymentInfo?.pricePerMonth
         },
         vndPricePerMonth() {
             return this.roomPrice > 1 ? this.$options.filters.vnd(this.roomPrice) : '-'
         },
         daysToNextMonth() {
-            return daysToNextMonth(this.processedDate)
+            return this.paymentInfo?.daysToNextMonth
         },
-        vndPricePerDay() {
-            if (this.vndPricePerMonth === '-') {
-                return '-'
-            }
-
-            const pricePerDay = Math.ceil(this.roomPrice / this.daysToNextMonth)
-            return this.$options.filters.vnd(pricePerDay)
-        },
-        dueDate() {
-            const endDate = new Date(this.processedDate)
-
-            // calculate months 
-            const months = Math.floor(this.netAmount / this.roomPrice)
-            endDate.setMonth(endDate.getMonth() + months)
-
-            // calculate days
-            const moneyForDays = this.netAmount % this.roomPrice
-            const days = moneyForDays > 0 
-                            ? Math.floor(moneyForDays / ( this.roomPrice / daysToNextMonth(endDate)))
-                            : 0
-            endDate.setDate(endDate.getDate() + days)
-
-            console.log("MONTHS " , months, "days ", days)
-
-            return endDate
-        },
-      
     },
-    watch: {
-        roomInfo(val) {
-            if (val) {
-                this.netAmount = this.roomInfo.price
-            }
-        }
+    async created() {
+        await this.calculatePayment()
     },
     methods : {
-        submit() {
+        ...mapActions([ CALCULATE_PAYMENT_INFO ]),
+        async calculatePayment() {
+            await this[CALCULATE_PAYMENT_INFO]({
+                roomId: this.roomId,
+                startDate: this.startDate,
+                netAmount: this.netAmount,
+            })
 
+            this.netAmount = this.paymentInfo.netAmount
+            this.dueDate = this.paymentInfo.dueDate
+        },
+        submit() {
+            // TODO: implement this method
         }
     }
 }
