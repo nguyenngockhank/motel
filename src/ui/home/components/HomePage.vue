@@ -6,11 +6,11 @@
   </div>
 </template>
 
-<script>
-import PageInit from './init/PageInit'
-import Dashboard from './dashboard/Dashboard'
+<script lang="ts">
+import PageInit from './init/PageInit.vue'
+import Dashboard from './dashboard/Dashboard.vue'
 
-import { createHomeStoreHelper, ACTION_TYPES } from '../store'
+import { createHomeStoreHelper, HomeState, ACTION_TYPES } from '../store'
 const { mapActions, mapState } = createHomeStoreHelper()
 const { INIT_MOTEL, LOAD_MOTEL } = ACTION_TYPES
 
@@ -18,7 +18,7 @@ export default {
   components: { PageInit, Dashboard },
   computed: {
     ...mapState({
-      isInitialized: state => state.isInitialized,
+      isInitialized: ( state : HomeState) => state.isInitialized,
     })
   },
   async created() {

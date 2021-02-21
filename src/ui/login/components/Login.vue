@@ -21,13 +21,14 @@
 </el-row>
 </template>
 
-<script>
-import { createLoginStoreHelper, ACTION_TYPES } from '../store'
+<script lang="ts">
+import Vue from 'vue'
+import { createLoginStoreHelper, ACTION_TYPES, LoginState } from '../store'
 
 const { mapState, mapActions } = createLoginStoreHelper()
 const { LOGIN, LOAD_SESSION } = ACTION_TYPES
 
-export default {
+export default Vue.extend({
   data() {
     return {
       labelPosition: 'top',
@@ -39,7 +40,7 @@ export default {
   },
   computed: {
     ...mapState({
-      isLogin: state => state.isLogin,
+      isLogin: (state : LoginState )=> state.isLogin,
     })
   },
   watch : {
@@ -61,5 +62,5 @@ export default {
       this[LOGIN](this.form);
     },
   }
-}
+})
 </script>

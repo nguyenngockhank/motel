@@ -6,7 +6,7 @@ import { actions } from './actions'
 import { ACTION_TYPES } from "./action-types"
 import { getters } from './getters'
 
-export { ACTION_TYPES }
+export { ACTION_TYPES, HomeState }
 
 export const homeStore: Module<any, HomeState> = {
   namespaced: true,

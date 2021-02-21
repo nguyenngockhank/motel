@@ -12,4 +12,4 @@ actions[CALCULATE_PAYMENT_INFO] = async ({ getters, commit } : ActionContext, re
 }
 
 
-export { actions }
+export { PaymentInfoCalculateRequest, actions }

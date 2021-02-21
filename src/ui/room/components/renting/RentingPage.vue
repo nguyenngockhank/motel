@@ -56,8 +56,9 @@
 </div>
 </template>
 
-<script>
-import { createRoomStoreHelper, ACTION_TYPES } from '../../store'
+<script lang="ts">
+import { RoomState, createRoomStoreHelper, ACTION_TYPES } from '../../store'
+import { PaymentInfoCalculateRequest } from '../../store/actions'
 const {  mapState, mapActions } = createRoomStoreHelper()
 const { CALCULATE_PAYMENT_INFO } = ACTION_TYPES
 
@@ -72,7 +73,7 @@ export default {
     },
     computed: {
         ...mapState({
-            paymentInfo: state => state.renting.paymentInfo,
+            paymentInfo: ( state: RoomState) => state.renting.paymentInfo,
         }),
         roomId() {
             return this.$route.params.id;
@@ -93,11 +94,13 @@ export default {
     methods : {
         ...mapActions([ CALCULATE_PAYMENT_INFO ]),
         async calculatePayment() {
-            await this[CALCULATE_PAYMENT_INFO]({
+
+            const request : PaymentInfoCalculateRequest = {
                 roomId: this.roomId,
                 startDate: this.startDate,
                 netAmount: this.netAmount,
-            })
+            }
+            await this[CALCULATE_PAYMENT_INFO](request)
 
             this.netAmount = this.paymentInfo.netAmount
             this.dueDate = this.paymentInfo.dueDate

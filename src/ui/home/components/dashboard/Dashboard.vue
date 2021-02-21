@@ -16,9 +16,9 @@
 </div>
 </template>
 
-<script>
-import RoomCard from './RoomCard'
-import { createHomeStoreHelper } from '../../store'
+<script lang="ts">
+import RoomCard from './RoomCard.vue'
+import { createHomeStoreHelper, HomeState } from '../../store'
 const { mapState } = createHomeStoreHelper()
 
 
@@ -28,10 +28,10 @@ export default {
     },
     computed: {
         ...mapState({
-            isInitialized: state => state.isInitialized,
-            name: state => state.motel.name,
-            slogan: state => state.motel.slogan,
-            rooms: state => state.rooms,
+            isInitialized: (state: HomeState) => state.isInitialized,
+            name:  (state: HomeState) => state.motel.name,
+            slogan:  (state: HomeState) => state.motel.slogan,
+            rooms:  (state: HomeState) => state.rooms,
         })
     },
 }
