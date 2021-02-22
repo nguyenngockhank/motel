@@ -1,0 +1,14 @@
+{
+  "editor.tabSize": 4,
+  "editor.formatOnSave": false,
+  "editor.formatOnPaste": false,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.importModuleSpecifier": "relative",
+}

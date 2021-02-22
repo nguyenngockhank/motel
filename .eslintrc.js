@@ -16,6 +16,7 @@ module.exports = {
     },
     rules: {
       "func-names": ["warn", "as-needed"],
+      "@typescript-eslint/no-empty-function": "off",
       "no-restricted-syntax": [
         "error",
         {
