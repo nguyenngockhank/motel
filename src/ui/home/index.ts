@@ -1,3 +1,3 @@
-import { HomeModule } from "./HomeModule"
+import { HomeModule } from "./HomeModule";
 
-export { HomeModule }
+export { HomeModule };

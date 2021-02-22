@@ -1,15 +1,15 @@
 import { PaymentInfo } from "src/motel/payment/domain/PaymentInfo";
 
 export interface RentingState {
-    paymentInfo?: PaymentInfo
+  paymentInfo?: PaymentInfo;
 }
 
 export interface RoomState {
-    renting: RentingState
+  renting: RentingState;
 }
 
 export const initialState: RoomState = {
-    renting: {
-        paymentInfo: undefined
-    }
-}
+  renting: {
+    paymentInfo: undefined,
+  },
+};

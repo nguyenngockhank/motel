@@ -5,17 +5,17 @@ import { MotelCreateInput, MotelSetting } from "../domain/MotelSetting";
 
 @injectable()
 export class LocalStorageMotelSetting implements MotelSetting {
-    private storage : AppLocalStorage
+  private storage: AppLocalStorage;
 
-    constructor() {
-        this.storage = new AppLocalStorage('TroCuaTui')
-    }
+  constructor() {
+    this.storage = new AppLocalStorage("TroCuaTui");
+  }
 
-    async create(input: MotelCreateInput): Promise<void> {
-        this.storage.setItem('MotelInfo', input)
-    }
+  async create(input: MotelCreateInput): Promise<void> {
+    this.storage.setItem("MotelInfo", input);
+  }
 
-    async load(): Promise<Motel | null> {
-        return this.storage.getItem<Motel>('MotelInfo')
-    }
+  async load(): Promise<Motel | null> {
+    return this.storage.getItem<Motel>("MotelInfo");
+  }
 }

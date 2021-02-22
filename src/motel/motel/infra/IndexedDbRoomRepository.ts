@@ -6,33 +6,32 @@ import { RoomRepository } from "../domain/RoomRepository";
 
 @injectable()
 export class IndexedDbRoomRepository extends RoomRepository {
+  constructor(
+    @inject(TYPES.AppIndexedDB)
+    private appIndexedDB: AppIndexedDB,
+  ) {
+    super();
+  }
 
-    constructor(
-        @inject(TYPES.AppIndexedDB)
-        private appIndexedDB: AppIndexedDB
-    ) { 
-        super()
-    }
+  private objectStore(): Promise<AppObjectStore> {
+    return this.appIndexedDB.objectStoreWrapper("rooms");
+  }
 
-    private objectStore() : Promise<AppObjectStore> {
-        return this.appIndexedDB.objectStoreWrapper('rooms')
-    }
+  async getAll(): Promise<Room[]> {
+    const objectStore = await this.objectStore();
+    const result = await objectStore.readAll<Room>();
+    console.log("--- READ ALL ", result);
+    return result;
+  }
 
-    async getAll(): Promise<Room[]> {
-        const objectStore = await this.objectStore()
-        const result = await objectStore.readAll<Room>()
-        console.log("--- READ ALL ", result);
-        return result
-    }
+  async getById(roomId: string): Promise<Room> {
+    const objectStore = await this.objectStore();
+    const result = await objectStore.read<Room>(roomId);
+    return result;
+  }
 
-    async getById(roomId: string): Promise<Room> {
-        const objectStore = await this.objectStore()
-        const result = await objectStore.read<Room>(roomId)
-        return result
-    }
-
-    async create(room: Room): Promise<void> {
-        const objectStore = await this.objectStore()
-        await objectStore.add(room)
-    }
+  async create(room: Room): Promise<void> {
+    const objectStore = await this.objectStore();
+    await objectStore.add(room);
+  }
 }

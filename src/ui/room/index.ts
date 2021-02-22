@@ -1,3 +1,3 @@
-import { RoomModule } from "./RoomModule"
+import { RoomModule } from "./RoomModule";
 
-export { RoomModule }
+export { RoomModule };

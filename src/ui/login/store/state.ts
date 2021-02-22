@@ -1,7 +1,7 @@
 export interface LoginState {
-    isLogin: boolean
+  isLogin: boolean;
 }
 
 export const initialState: LoginState = {
-    isLogin: false,
-}
+  isLogin: false,
+};

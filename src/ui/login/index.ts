@@ -1,3 +1,3 @@
-import { LoginModule } from "./LoginModule"
+import { LoginModule } from "./LoginModule";
 
-export { LoginModule }
+export { LoginModule };

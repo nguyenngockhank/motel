@@ -1,23 +1,20 @@
+import { Module, createNamespacedHelpers } from "vuex";
+import { RoomState, initialState } from "./state";
+import { actions } from "./actions";
+import { ActionTypes } from "./action-types";
+import { getters } from "./getters";
+import { mutations } from "./mutations";
 
-import { Module, createNamespacedHelpers } from 'vuex'
-import { RoomState, initialState } from './state'
-import { actions } from './actions'
-import { ACTION_TYPES } from "./action-types"
-import { getters } from './getters'
-import { mutations } from './mutations'
-
-export { RoomState, ACTION_TYPES }
+export { RoomState, ActionTypes as ACTION_TYPES };
 
 export const roomStore: Module<any, RoomState> = {
-    namespaced: true,
-    state: initialState,
-    actions,
-    mutations,
-    getters,
-  }
-  
-  
-  
+  namespaced: true,
+  state: initialState,
+  actions,
+  mutations,
+  getters,
+};
+
 export function createRoomStoreHelper() {
-    return createNamespacedHelpers('room');
+  return createNamespacedHelpers("room");
 }

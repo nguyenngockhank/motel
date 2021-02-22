@@ -5,10 +5,9 @@ export type InitRequest = MotelCreateInput;
 
 @injectable()
 export class MotelInitInteractor {
+  constructor(@inject(TYPES.MotelSetting) private motelSetting: MotelSetting) {}
 
-    constructor(@inject(TYPES.MotelSetting) private motelSetting: MotelSetting) {}
-
-    execute(request: InitRequest) : Promise<void> {
-        return this.motelSetting.create(request);
-    }
+  execute(request: InitRequest): Promise<void> {
+    return this.motelSetting.create(request);
+  }
 }
