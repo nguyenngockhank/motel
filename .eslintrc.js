@@ -2,7 +2,10 @@ module.exports = {
     parser: "@typescript-eslint/parser", // Specifies the ESLint parser
     plugins: ["@typescript-eslint", "prettier"],
     extends: [
+      "airbnb-typescript/base",
       "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended",
+      "prettier",
     ],
     parserOptions: {
       ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
@@ -16,7 +19,11 @@ module.exports = {
     },
     rules: {
       "func-names": ["warn", "as-needed"],
-      "@typescript-eslint/no-empty-function": "off",
+      "import/prefer-default-export": "off",
+      "no-param-reassign": "off",
+      "no-plusplus": "off",
+      "max-len": "warn",
+      "default-case": "warn",
       "no-restricted-syntax": [
         "error",
         {
@@ -36,5 +43,5 @@ module.exports = {
         },
       ]
     },
-};
+}
   
